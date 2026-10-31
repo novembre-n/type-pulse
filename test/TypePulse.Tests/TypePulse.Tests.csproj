@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\TypePulse\TypePulse.csproj" />
+    <ProjectReference Include="..\..\server\TypePulse.csproj" />
   </ItemGroup>
 
 </Project>
