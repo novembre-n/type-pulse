@@ -22,6 +22,12 @@ public class PresenceStore
         return _usersByConnection.Values.ToArray();
     }
 
+    public string? GetName(string connectionId)
+    {
+        _usersByConnection.TryGetValue(connectionId, out var name);
+        return name;
+    }
+
     public string[] RemoveUser(string connectionId)
     {
         _usersByConnection.TryRemove(connectionId, out _);

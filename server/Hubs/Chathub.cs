@@ -26,6 +26,35 @@ public class ChatHub : Hub
         await Clients.All.SendAsync("PresenceUpdated", users);
     }
 
+    public async Task SendMessage(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            throw new HubException("A message is required.");
+        }
+
+        var name = _presenceStore.GetName(Context.ConnectionId);
+
+        if (name is null)
+        {
+            throw new HubException("Join before you send a message.");
+        }
+
+        await Clients.All.SendAsync("MessageReceived", name, text.Trim());
+    }
+
+    public async Task UserTyping()
+    {
+        var name = _presenceStore.GetName(Context.ConnectionId);
+
+        if (name is null)
+        {
+            return;
+        }
+
+        await Clients.Others.SendAsync("UserTyping", name);
+    }
+
     public override async Task OnDisconnectedAsync(Exception? exception)
     {
         var users = _presenceStore.RemoveUser(Context.ConnectionId);
