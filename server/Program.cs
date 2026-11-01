@@ -15,3 +15,5 @@ app.UseStaticFiles();   // serves the generated JavaScript, CSS, and other asset
 app.MapHub<ChatHub>("/chat");
 
 app.Run();
+
+public partial class Program { }
