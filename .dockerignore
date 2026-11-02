@@ -1,0 +1,22 @@
+# Frontend
+client/node_modules/
+client/dist/
+
+# .NET build output
+server/bin/
+server/obj/
+test/bin/
+test/obj/
+
+# Generated frontend output (rebuilt in the image)
+server/wwwroot/
+
+# Git and editor
+.git/
+.gitignore
+.vs/
+.vscode/
+.idea/
+
+# Notes and docs (not needed in the image)
+*.md
